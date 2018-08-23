@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Constant;
+namespace App\Constants;
 
-class HTTPStatues
+class HTTPStatuses
 {
     const OK = '200';
     const CREATED = '201';

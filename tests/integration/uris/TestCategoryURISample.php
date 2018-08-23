@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\integration\uris;
 
 use Tests\TestCase;
-use App\Constant\HTTPStatues;
+use App\Constants\HTTPStatuses;
 
-class CategorySampleTest extends TestCase
+class TestCategoryURISample extends TestCase
 {
     /**
      * Category
@@ -29,7 +29,7 @@ class CategorySampleTest extends TestCase
     public function testGetCategoryListNotAuthenticated()
     {
         $this->get(config('api/urls.CategoryListURL'))
-        ->assertStatus(HTTPStatues::NOT_AUTHENTICATED);
+        ->assertStatus(HTTPStatuses::NOT_AUTHENTICATED);
     }
 
     public function testGetCategoryDetailSuccess()
@@ -41,103 +41,103 @@ class CategorySampleTest extends TestCase
     public function testGetCategoryDetailNotFound()
     {
         $this->get(config('api/urls.CategoryDetailURL'))
-        ->assertStatus(HTTPStatues::NOT_FOUND);
+        ->assertStatus(HTTPStatuses::NOT_FOUND);
     }
 
     public function testGetCategoryDetailNotAuthenticated()
     {
         $this->get(config('api/urls.CategoryDetailURL'))
-        ->assertStatus(HTTPStatues::NOT_AUTHENTICATED);
+        ->assertStatus(HTTPStatuses::NOT_AUTHENTICATED);
     }
 
     public function testUpdateCategoryDetailSuccess()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'), $data)
-        ->assertStatus(HTTPStatues::OK);
+        ->assertStatus(HTTPStatuses::OK);
     }
 
     public function testUpdateCategoryDetailNotFound()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'), $data)
-        ->assertStatus(HTTPStatues::NOT_FOUND);
+        ->assertStatus(HTTPStatuses::NOT_FOUND);
     }
 
     public function testUpdateCategoryDetailNotAuthenticated()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'))
-        ->assertStatus(HTTPStatues::NOT_AUTHENTICATED);
+        ->assertStatus(HTTPStatuses::NOT_AUTHENTICATED);
     }
 
     public function testUpdateCategoryDetailWithLenghtNameLargerThan200CharacterResponseBadRequest()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testUpdateCategoryDetailWithNameIsEmptyStringResponseBadRequest()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testUpdateCategoryDetailWithDescriptionIsEmptyStringResponseBadRequest()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testUpdateCategoryDetailWithNameAndDescriptionAreEmptyResponseBadRequest()
     {
         $data = [];
         $this->put(config('api/urls.CategoryDetailURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testCreateNewCategoryResponseSuccessResponseCreated()
     {
         $data = [];
         $this->post(config('api/urls.CategoryListURL'), $data)
-        ->assertStatus(HTTPStatues::CREATED);
+        ->assertStatus(HTTPStatuses::CREATED);
     }
 
     public function testCreateNewCategoryNotAuthenticated()
     {
         $data = [];
         $this->post(config('api/urls.CategoryListURL'), $data)
-        ->assertStatus(HTTPStatues::NOT_AUTHENTICATED);
+        ->assertStatus(HTTPStatuses::NOT_AUTHENTICATED);
     }
 
     public function testCreateNewCategoryWithNameIsEmptyStringResponseBadRequest()
     {
         $data = [];
         $this->post(config('api/urls.CategoryListURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testCreateNewCategoryWithDescriptionIsEmptyStringResponseBadRequest()
     {
         $data = [];
         $this->post(config('api/urls.CategoryListURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testCreateNewCategoryWithNameAndDescriptionAreEmptyStringResponseBadREquest()
     {
         $data = [];
         $this->post(config('api/urls.CategoryListURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 
     public function testCreateNewCategoryWithNameHasLengthLargerThan200CharacterResponseBadRequest()
     {
         $data = [];
         $this->post(config('api/urls.CategoryListURL'), $data)
-        ->assertStatus(HTTPStatues::BAD_REQUEST);
+        ->assertStatus(HTTPStatuses::BAD_REQUEST);
     }
 }

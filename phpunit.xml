@@ -9,12 +9,12 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+        <testsuite name="unit">
+            <directory suffix=".php">./tests/unit/models/</directory>
         </testsuite>
 
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+        <testsuite name="integration">
+            <directory suffix=".php">./tests/integration/uris</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -29,5 +29,6 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="MAIL_DRIVER" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite_testing"/>
     </php>
 </phpunit>
