@@ -107,7 +107,7 @@ http://localhost:8000/categories/?limit=5&offset=0
 | :---: | :---: |
 |200|OK|
 |404| Not Found|
-|500| Sever Error|
+|500| Internal Server Error|
 
 ## POST /categories
 ### Description
@@ -135,9 +135,11 @@ body:
 When create a category, slug = lowercase(name) + (-) and its slug created automatic
 
 Example
-|Name|Slug |
+
+|Name| Slug |
 | :---: | :---: |
 |test category| test-category|
+
 ### Response
 #### Example Response:
 ```
@@ -156,7 +158,7 @@ Example
 | :---: | :---: |
 |201|Created|
 |400|Bad Request|
-|500| Sever Error|
+|500| Internal Server Error|
 
 // TODO: Write Api With Article Model
 - Get list article by category (GET http://localhost:8000/articles/{category-slug}/?limit=10&offset=5)
